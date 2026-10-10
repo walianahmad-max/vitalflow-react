@@ -1,0 +1,161 @@
+@import "tailwindcss";
+@import "./fonts.css";
+@theme {
+  --color-brand: #4486ff;
+  --color-ink: #0b0c0b;
+  --color-muted: #777a78;
+  --color-pale: #f4f9fc;
+  --font-sans: "Satoshi", Arial, sans-serif;
+  --font-display: "Inter Display", Arial, sans-serif;
+}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    margin: 0;
+    color: var(--color-ink);
+    background: white;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+  }
+  button,
+  a,
+  input,
+  textarea,
+  select {
+    -webkit-tap-highlight-color: transparent;
+  }
+  button,
+  a {
+    touch-action: manipulation;
+  }
+  button {
+    cursor: pointer;
+  }
+  a {
+    text-decoration: none;
+  }
+  input,
+  textarea,
+  select {
+    font: inherit;
+    min-width: 0;
+  }
+  :focus-visible {
+    outline: 3px solid #4486ff;
+    outline-offset: 5px;
+  }
+  ::selection {
+    background: #dceaff;
+  }
+}
+@layer components {
+  .shell {
+    @apply mx-auto w-[calc(100%-40px)] max-w-[1140px] md:w-[calc(100%-80px)];
+  }
+  .section {
+    @apply py-14 md:py-20 lg:py-[100px];
+  }
+  .pill {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand px-[22px] py-3 text-base text-white transition duration-300 hover:bg-[#236dec] hover:shadow-md;
+  }
+  .heading {
+    @apply text-[36px] leading-[1.14] md:text-[50px];
+  }
+  .page-heading {
+    @apply text-[42px] leading-[1.12] md:text-[56px] lg:text-[64px];
+  }
+  .field {
+    @apply w-full rounded-xl border border-[#e5e8eb] bg-white px-5 py-4 text-base outline-none transition placeholder:text-[#929692] focus:border-brand focus:ring-2 focus:ring-blue-100;
+  }
+  .prose-body p {
+    @apply mb-7 whitespace-pre-line text-lg leading-[1.65] text-[#636763];
+  }
+  .prose-body h2,
+  .prose-body h3,
+  .prose-body h4,
+  .prose-body h5,
+  .prose-body h6 {
+    @apply mb-5 mt-10 text-[30px] leading-tight;
+  }
+  .prose-body ul {
+    @apply mb-7 list-disc space-y-3 pl-6 text-lg text-[#636763];
+  }
+  .arrow-box {
+    @apply flex size-[30px] items-center justify-center rounded-lg border border-[#e8e8e8] transition group-hover:border-brand group-hover:bg-brand group-hover:text-white;
+  }
+}
+.page-enter {
+  animation: pageIn 0.65s ease both;
+}
+@keyframes pageIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+.reveal {
+  animation: revealIn 0.65s ease both;
+}
+@keyframes revealIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+.contact-band .field {
+  background: transparent;
+  border: 1px solid #ffffff70;
+  color: white;
+  border-radius: 12px;
+}
+.contact-band .field::placeholder {
+  color: #ffffffd9;
+}
+.contact-band .pill {
+  background: white;
+  color: #0b0c0b;
+}
+.contact-band .text-xs {
+  color: #ffffffd9;
+}
+.contact-band .inline-flex .bg-brand {
+  background: white;
+}
+.contact-band input[type="date"] {
+  color-scheme: dark;
+}
